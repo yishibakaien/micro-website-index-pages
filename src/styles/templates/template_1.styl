@@ -1,0 +1,115 @@
+.bg
+  background-image url('../../images/template_1.jpg')
+
+.bg
+  min-height 100%
+  height auto
+  overflow hidden
+  display flex
+
+.main
+  display flex
+  flex-direction column
+
+.sticky-blank, .find, .iconfont, .icon-wenbensousuo, .search .text, .camera, .icon-tupiansousuo
+  display none
+
+.search-container
+  width 90px
+  height 81px
+  background-color rgba(16, 39, 75, .65)
+  flex 1 0 81px
+  position relative
+
+.search
+  width 90px
+  height 81px
+  background-color transparent
+  text-align center
+  margin 0
+  border-radius 0
+  position absolute
+  left:50%;
+  top 50%
+  transform:translate(-50%,-50%);
+  transform-origin:50% 50%;
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+
+.search:after
+  content '搜花'
+  color rgba(255, 255, 255, .8)
+  font-size 12px
+  line-height 20px
+
+.search:before
+  content '\e611'
+  font-family "iconfont" !important
+  font-style normal
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  color #fff
+  height 40px
+  width 40px
+  font-size 22px
+  line-height 40px
+  display inline-block
+  -webkit-box-sizing border-box
+  box-sizing border-box
+  border 2px solid #fff
+  border-radius 50%
+
+.list-container
+  width 90px
+  background-color rgba(16, 39, 75, .65)
+  flex 7 0 522px
+  display flex
+  flex-direction column
+
+  .list
+    height 81px
+    position relative
+    text-align center
+    box-sizing border-box
+    flex 1 0 81px
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+
+    .iconfont
+      color #9a99ff
+      display inline-block
+      height 40px
+      width 40px
+      font-size 22px
+      line-height 40px
+      text-align center
+      -webkit-box-sizing border-box
+      box-sizing border-box
+      border 2px solid #9a99ff
+      border-radius 50%
+
+    .text
+      color rgba(255, 255, 255, .8)
+      font-size 12px
+      line-height 20px
+
+  .list:before
+    content ''
+    position absolute
+    left 0
+    right 0
+    top 0
+    height 1px
+    border-top 1px solid rgba(255, 255, 255, .4)
+    -webkit-transform-origin 0 100%
+    transform-origin top left
+    -webkit-transform scaleY(0.5)
+    transform scaleY(0.5)
+
+  .list:nth-child(6)
+    padding-bottom 36px
+    flex 1 0 117px

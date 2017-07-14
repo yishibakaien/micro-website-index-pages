@@ -1,0 +1,36 @@
+{
+  "name": "micro_website_index_pages",
+  "version": "1.0.0",
+  "description": "微官网首页",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --colors --inline --progress",
+    "build": "webpack -p --colors --progress --display-reasons"
+  },
+  "author": "cloud_cb",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "glob": "^7.1.2",
+    "html-loader": "^0.4.5",
+    "html-webpack-inline-source-plugin": "^0.0.9",
+    "html-webpack-plugin": "^2.28.0",
+    "image-webpack-loader": "^3.3.1",
+    "postcss": "^6.0.1",
+    "postcss-loader": "^2.0.5",
+    "style-loader": "^0.18.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}

@@ -1,0 +1,110 @@
+.bg
+  background-image url('../../images/template_5.jpg')
+  position relative
+
+.logo
+  display none
+
+.search
+  background-color rgba(0, 0, 0, .2)
+
+.logo-container
+  height 36px
+  width 36px
+  box-sizing border-box
+  border 2px solid #fff
+  border-radius 50%
+  position absolute
+  bottom 54px
+  left 15px
+  display flex
+  align-items center
+  justify-content center
+  transition .4s
+
+.logo-container:before
+  content '+'
+  position relative
+  top -3px
+  font-size 36px
+  font-weight 500
+  color #fff
+
+.list-container
+  width 250px
+  position absolute
+  bottom 90px
+  left -265px
+  overflow hidden
+  transition .5s
+
+  .list
+    width 100px
+    height 50px
+    box-sizing border-box
+    padding-bottom 14px
+    position relative
+
+    .iconfont
+      display inline-block
+      height 36px
+      width 36px
+      font-size 22px
+      line-height 36px
+      text-align center
+      -webkit-box-sizing border-box
+      box-sizing border-box
+      border-width 2px
+      border-style solid
+      border-radius 50%
+      float left
+
+    .text
+      color #fff
+      font-size 12px
+      float right
+      line-height 36px
+
+  .list:nth-child(6)
+    left 5px
+    color #70a9ff
+    border-color #70a9ff
+    padding-bottom 14px
+
+  .list:nth-child(5)
+    left 15px
+    color #9594ff
+    border-color #9594ff
+
+  .list:nth-child(4)
+    left 30px
+    color #ff8e8e
+    border-color #ff8e8e
+
+  .list:nth-child(3)
+    left 50px
+    color #ffbc4e
+    border-color #ffbc4e
+
+  .list:nth-child(2)
+    left 75px
+    color #45b6ff
+    border-color #45b6ff
+
+  .list:nth-child(1)
+    left 115px
+    color #d198fe
+    border-color #d198fe
+
+// .logo-container:hover
+.logo-container.active
+  transform rotate(135deg) scale(1.1) translateZ(0)
+.list-container.active
+  left 15px
+  transform translateZ(0)
+// .logo-container:hover + .list-container
+//   left 15px
+//   transform translateZ(0)
+// .list-container:hover
+//   left 15px
+//   transform translateZ(0)

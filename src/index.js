@@ -6,7 +6,7 @@ var domain = 'https://api.ts57.cn';
 // var domain = 'http://192.168.2.11:8080';
 
 // 微官网静态地址
-var BASE_URL = 'https://www.ts57.cn/microWebsite';
+var BASE_URL = 'http://www.lacewang.cn/microWebsite';
 
 var companyId;
 

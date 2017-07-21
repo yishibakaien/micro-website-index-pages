@@ -1,7 +1,10 @@
 import './styles/static/common.styl';
 import './styles/static/reset.styl';
 import './fonts/iconfont.css';
-// api接口地址
+// 微信 jssdk
+import wx from 'weixin-js-sdk';
+
+// api 接口地址
 var domain = 'https://api.ts57.cn';
 // var domain = 'http://192.168.2.11:8080';
 
@@ -9,6 +12,8 @@ var domain = 'https://api.ts57.cn';
 var BASE_URL = 'http://www.lacewang.cn/microWebsite';
 
 var companyId;
+
+var wxShareArg = {}; // 微信分享参数 
 
 var search = c('search');
 var logo = c('logo');
@@ -21,7 +26,74 @@ var contact = c('contact');
 var footerTime = c('footerTime');
 
 var indexName = location.host.split('.')[0];
+
+// var indexName = 'xianhua';
 console.log(indexName);
+// 获取微信 jsssdk 分享授权
+var authData = {
+    url: location.href
+};
+Ajax({
+    url: domain + '/wechat/jsOAuth',
+    method: 'POST',
+    headers: {
+        'x-client': '4',
+        'x-version': '1.0'
+    },
+    data: JSON.stringify(authData),
+    success: function(res) {
+        console.log('wx success', res);
+        wx.config({
+            debug: false,
+            appId: res.data.appId,
+            timestamp: res.data.timestamp,
+            nonceStr: res.data.noncestr,
+            signature: res.data.signature,
+            jsApiList: [ // 必填，需要使用的JS接口列表
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo'
+            ]
+        });
+    },
+    error: function(res) {
+        console.log('wx error', res);
+    }
+});
+// 微信分享方法（朋友圈和朋友）
+function wxBindFunction(wxShareArg) {
+    // alert("行程列表页面title: " + wxShareArg.title)
+    // 微信分享到朋友圈
+    wx.onMenuShareTimeline({
+        title: wxShareArg.title, // 分享标题
+        link: wxShareArg.link,   // 分享链接
+        imgUrl: wxShareArg.imgUrl, // 分享图标
+        trigger : function() {},
+        success : function() { 
+            // alert('分享成功');
+        },
+        cancel : function() {
+            // alert('取消分享');
+        }
+    });
+    // 分享给朋友
+    wx.onMenuShareAppMessage({
+        title: wxShareArg.title, // 分享标题
+        desc: wxShareArg.desc, // 分享描述
+        link: wxShareArg.link, // 分享链接
+        imgUrl: wxShareArg.imgUrl, // 分享图标
+        type: 'link', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function() { 
+            // alert('分享成功');
+        },
+        cancel: function() {
+            // alert('取消分享');
+        }
+    });
+}
+
 getCompanyId();
 function getCompanyId() {
     Ajax({
@@ -91,12 +163,25 @@ function getCompanyInfo() {
             'x-version': '1.0'
         },
         success: function(res) {
-            // console.log('返回的公司信息', res.data);
+            console.log('返回的公司信息', res.data);
             if (res.code != 0) {
                 alert('获取公司信息失败');
                 return;
             }
             var data = res.data;
+
+            // 这里设置微信分享数据
+            wxShareArg = {
+                title: res.data.companyName,
+                imgUrl: encodeURIComponent(res.data.companyHeadIcon).split('%3A').join(':').split('%2F').join('/'),
+                link: location.href,
+                desc: '快来我的店铺逛逛吧，这里可以快照搜花和3D试衣哦 ' + location.href
+            };
+            wx.ready(function() {
+                wxBindFunction(wxShareArg);
+                console.log('绑定分享参数成功');
+            });
+
             var mapAddress = {
                 // 获取公司地址经纬度
                 lat: data.lat,

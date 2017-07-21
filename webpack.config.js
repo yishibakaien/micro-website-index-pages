@@ -86,19 +86,20 @@ let config = {
     ],
     devServer: {
         host: '127.0.0.1',
-        port: 3004, // 端口
+        port: 80, // 端口
         inline: true,
-        hot: false,
-        proxy: {
-            '/api/*': {
-                target: 'http://192.168.1.11:8080',
-                secure: false,
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
-            }
-        }
+        disableHostCheck: true,
+        hot: false
+        // proxy: {
+        //     '/api/*': {
+        //         target: 'http://192.168.1.11:8080',
+        //         secure: false,
+        //         changeOrigin: true,
+        //         pathRewrite: {
+        //             '^/api': ''
+        //         }
+        //     }
+        // }
     }
 };
 
@@ -111,9 +112,9 @@ temps.forEach(function(item) {
         hash: false,
         chunks: ['index', item],
         inlineSource: '(' + item + '.css|index.css|index.js)',
-        minify: { // 压缩HTML文件
-            removeComments: true, // 移除HTML中的注释
-            collapseWhitespace: true // 删除空白符与换行符（压缩html）
+        minify: { // 压缩 html 文件
+            removeComments: true, // 移除 html 中的注释
+            collapseWhitespace: true // 删除空白符与换行符(压缩 html )
         }
     };
     config.entry[item] = `./src/styles/templates/${item}.styl`;

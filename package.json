@@ -4,7 +4,7 @@
   "description": "微官网首页",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --colors --inline --progress",
+    "dev": "webpack-dev-server",
     "build": "webpack -p --colors --progress --display-reasons"
   },
   "author": "cloud_cb",
@@ -32,5 +32,8 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "weixin-js-sdk": "^1.2.0"
   }
 }

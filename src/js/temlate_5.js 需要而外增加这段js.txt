@@ -1,0 +1,1 @@
+打包完的 dist/template_5.js 需要而外增加这段js，因为页面dom 结构不同 还有一些与别的 template 不一样的 操作需要这段 js 支持
